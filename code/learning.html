@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>✨Learning✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('../backgroundImage/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: sans-serif;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../backgroundImage/background.jpg') center/cover no-repeat;
+            filter: blur(20px);
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        nav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8));
+            padding:10px;
+            width: 18%;
+            border-radius: 10px;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            flex: 1;
+            text-align: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border: 3px dashed white;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background: #4682B4;
+            transform: scale(1.1);
+        }
+        .background-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 5em;
+            font-weight: bold;
+            color: black;
+            text-transform: uppercase;
+            white-space: nowrap;
+            z-index: -1;
+            user-select: none;
+            filter: blur(1px); 
+            opacity: 0.6; 
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            display: flex;
+            gap: 30px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .box-container {
+            text-align: center;
+            width: 250px;
+        }
+
+        .box {
+            width: 250px;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border: 4px dashed #4682B4;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .alphabet { background-image: url('../learnpageImage/alphabet.jpg'); }
+        .numbers { background-image: url('../learnpageImage/number.jpg'); }
+        .shapes { background-image: url('../learnpageImage/shape.jpg'); }
+        .body-parts { background-image: url('../learnpageImage/bodyparts.jpg'); }
+        .wild-animals { background-image: url('../learnpageImage/wildanimal.jpg'); }
+        .pet-animals { background-image: url('../learnpageImage/pet-animals.jpg'); }
+        .week-days { background-image: url('../learnpageImage/week-days.jpg'); }
+        .months { background-image: url('../learnpageImage/months.jpg'); }
+        .fruits { background-image: url('../learnpageImage/fruits.jpg'); }
+        .flowers { background-image: url('../learnpageImage/flowers.jpg'); }
+        .insects { background-image: url('../learnpageImage/insects.jpg'); }
+        .birds { background-image: url('../learnpageImage/birds.jpg'); }
+        .games { background-image: url('../learnpageImage/games.jpg'); }
+        .flags { background-image: url('../learnpageImage/flags.jpg'); }
+        .our-identity { background-image: url('../learnpageImage/our-identity.jpg'); }
+        .monuments { background-image: url('../learnpageImage/monuments.jpg'); }
+
+        .box-text {
+            margin-top: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8));
+            padding: 10px;
+            border: 4px dashed #4682B4;
+            border-radius: 10px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .box-text:hover {
+            background: rgba(70, 130, 180, 0.8);
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .nav-buttons button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8));
+            color: white;
+            border: 3px dashed white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-buttons button:hover {
+            background: #4682B4;
+            transform: scale(1.1);
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav>✨✨
+        <ul>
+            <li><a href="home.html">⚡Home⚡</a></li>
+        </ul>✨✨
+    </nav>
+    <div class="background-text">✨🎃Coco  Melon  Learning🎃✨</div>
+    <div class="wrapper">
+        <div id="section1" class="container active">
+            <div class="box-container"><a href="alphabet.html"><div class="box alphabet"></div><div class="box-text">✨Alphabet✨</div></a></div>
+            <div class="box-container"><a href="numbers.html"><div class="box numbers"></div><div class="box-text">✨Numbers✨</div></a></div>
+            <div class="box-container"><a href="shapes.html"><div class="box shapes"></div><div class="box-text">✨Shapes✨</div></a></div>
+            <div class="box-container"><a href="bodyparts.html"><div class="box body-parts"></div><div class="box-text">✨Body Parts✨</div></a></div>
+        </div>
+
+        <div id="section2" class="container">
+            <div class="box-container"><a href="wild-animals.html"><div class="box wild-animals"></div><div class="box-text">✨Wild-Animals✨</div></a></div>
+            <div class="box-container"><a href="pet-animals.html"><div class="box pet-animals"></div><div class="box-text">✨Pet-Animals✨</div></a></div>
+            <div class="box-container"><a href="week-days.html"><div class="box week-days"></div><div class="box-text">✨Week-Days✨</div></a></div>
+            <div class="box-container"><a href="months.html"><div class="box months"></div><div class="box-text">✨Months✨</div></a></div>
+        </div>
+
+        <div id="section3" class="container">
+            <div class="box-container"><a href="fruits.html"><div class="box fruits"></div><div class="box-text">✨Fruits✨</div></a></div>
+            <div class="box-container"><a href="flowers.html"><div class="box flowers"></div><div class="box-text">✨Flowers✨</div></a></div>
+            <div class="box-container"><a href="insects.html"><div class="box insects"></div><div class="box-text">✨Insects✨</div></a></div>
+            <div class="box-container"><a href="birds.html"><div class="box birds"></div><div class="box-text">✨Birds✨</div></a></div>
+        </div>
+
+        <div id="section4" class="container">
+            <div class="box-container"><a href="games.html"><div class="box games"></div><div class="box-text">✨Games✨</div></a></div>
+            <div class="box-container"><a href="flags.html"><div class="box flags"></div><div class="box-text">✨Flags✨</div></a></div>
+            <div class="box-container"><a href="identity.html"><div class="box our-identity"></div><div class="box-text">✨Our-Identity✨</div></a></div>
+            <div class="box-container"><a href="monuments.html"><div class="box monuments"></div><div class="box-text">✨Monuments✨</div></a></div>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="showPreviousSection()">⬅ Previous</button>
+        <button id="nextBtn" onclick="showNextSection()">Next ➡</button>
+    </div>
+
+    <script>
+        let currentSection = 1;
+        const totalSections = 4;
+
+        function updateSections() {
+            for (let i = 1; i <= totalSections; i++) {
+                const section = document.getElementById(`section${i}`);
+                if (i === currentSection) {
+                    section.classList.add("active");
+                } else {
+                    section.classList.remove("active");
+                }
+            }
+
+            document.getElementById("prevBtn").style.visibility = currentSection === 1 ? "hidden" : "visible";
+            document.getElementById("nextBtn").style.visibility = currentSection === totalSections ? "hidden" : "visible";
+        }
+
+        function showNextSection() {
+            if (currentSection < totalSections) {
+                currentSection++;
+                updateSections();
+            }
+        }
+
+        function showPreviousSection() {
+            if (currentSection > 1) {
+                currentSection--;
+                updateSections();
+            }
+        }
+
+        updateSections();
+    </script>
+
+</body>
+</html>

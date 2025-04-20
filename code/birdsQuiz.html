@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birds Quiz✨</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background-image: url('../backgroundImage/background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100%;
+      font-family: 'Comic Sans MS', cursive;
+      position: relative;
+      padding: 20px;
+      overflow: hidden;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('../backgroundImage/background.jpg') center/cover no-repeat;
+      filter: blur(20px);
+      opacity: 0.8;
+      z-index: -1;
+    }
+    nav {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: rgba(0, 191, 255, 0.8);
+      padding: 10px;
+      border-radius: 10px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      padding: 8px 12px;
+      border: 2px dashed white;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .background-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 6em;
+      font-weight: bold;
+      color: black;
+      opacity: 0.5;
+      z-index: -1;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .quiz-container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 60px auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      padding: 25px;
+      overflow: hidden;
+    }
+    .question-section {
+      width: 100%;
+      text-align: center;
+      font-size: 1.7em;
+      color: white;
+      margin-top: 20px;
+      animation: fadeInUp 1s ease;
+    }
+    .question-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: black;
+    }
+    .image-options-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      margin-top: 25px;
+    }
+    .image-container {
+      flex: 1;
+      text-align: center;
+      padding-right: 20px;
+      animation: slideInLeft 1s ease;
+    }
+    .image-container img {
+      width: 320px;
+      height: 320px;
+      border-radius: 15px;
+      border: 4px dashed white;
+    }
+    .options-container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      text-align: center;
+      animation: slideInRight 1s ease;
+    }
+    .option-btn {
+      padding: 12px 25px;
+      font-size: 1.5em;
+      border: 4px dashed white;
+      border-radius: 10px;
+      cursor: pointer;
+      background: linear-gradient(to right, #00bfff, #1e90ff);
+      color: white;
+      opacity: 0.9;
+      transition: transform 0.2s;
+    }
+    .option-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #1c86ee, #00bfff);
+    }
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+    .controls button {
+      padding: 10px 25px;
+      font-size: 1.1em;
+      background: linear-gradient(to right, #00bfff, #1e90ff);
+      color: white;
+      border: 4px dashed white;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    }
+    .controls button:hover {
+      transform: scale(1.05);
+      background: #1c86ee;
+    }
+    .score-box {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 10px;
+      padding: 12px 20px;
+      background: rgba(255, 223, 186, 0.7);
+      border: 3px dashed white;
+      border-radius: 12px;
+      color: black;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="learning.html">⚡Go Back⚡</a></li>
+    </ul>
+  </nav>
+
+  <div class="background-text">✨🎃Coco  Melon  Learning🎃✨</div>
+
+  <div class="quiz-container">
+    <div class="question-section">
+      <h2>Which bird is this?</h2>
+    </div>
+    <div class="image-options-container">
+      <div class="image-container">
+        <img id="quiz-img" src="" alt="Quiz Image" />
+      </div>
+      <div class="options-container" id="options"></div>
+    </div>
+    <div class="controls">
+      <button id="prevBtn" onclick="prevQuestion()">⬅ Previous</button>
+      <button id="nextBtn" onclick="nextQuestion()">Next ➡</button>
+    </div>
+  </div>
+
+  <div class="score-box" id="scoreBox">Score: 0 / 0</div>
+
+  <script>
+    const questions = [
+      {
+        image: '../birdsImages/eagle.jpeg',
+        answer: "Eagle",
+        options: ["Eagle", "Parrot", "Penguin", "Hen"]
+      },
+      {
+        image: '../birdsImages/parrot.jpeg',
+        answer: "Parrot",
+        options: ["Eagle", "Parrot", "Penguin", "Crow"]
+      },
+      {
+        image: '../birdsImages/duck.jpeg',
+        answer: "Duck",
+        options: ["Penguin", "Parrot", "Eagle", "Duck"]
+      },
+      {
+        image: '../birdsImages/sparrow.jpeg',
+        answer: "Sparrow",
+        options: ["Crow", "Parrot", "Sparrow", "Peacock"]
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let attempted = 0;
+
+    function loadQuestion() {
+      const q = questions[current];
+      document.getElementById("quiz-img").src = q.image;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      optionsDiv.style.animation = "slideInRight 1s ease";
+      document.querySelector(".image-container").style.animation = "slideInLeft 1s ease";
+      document.querySelector(".question-section").style.animation = "fadeInUp 1s ease";
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerText = option;
+        btn.onclick = function () {
+          if (!btn.classList.contains("answered")) {
+            attempted++;
+            if (option === q.answer) {
+              btn.style.background = "green";
+              score++;
+            } else {
+              btn.style.background = "red";
+            }
+            updateScore();
+            btn.classList.add("answered");
+          }
+        };
+        optionsDiv.appendChild(btn);
+      });
+      updateScore();
+    }
+
+    function updateScore() {
+      document.getElementById("scoreBox").innerText = `Score: ${score} / ${attempted}`;
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        resetAnimations();
+        loadQuestion();
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        resetAnimations();
+        loadQuestion();
+      }
+    }
+
+    function resetAnimations() {
+      document.querySelector(".image-container").style.animation = "none";
+      document.querySelector(".question-section").style.animation = "none";
+      document.querySelector(".options-container").style.animation = "none";
+      document.querySelector(".image-container").offsetHeight;
+      document.querySelector(".question-section").offsetHeight;
+      document.querySelector(".options-container").offsetHeight;
+      document.querySelector(".image-container").style.animation = "slideInLeft 1s ease";
+      document.querySelector(".question-section").style.animation = "fadeInUp 1s ease";
+      document.querySelector(".options-container").style.animation = "slideInRight 1s ease";
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>

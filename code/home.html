@@ -1,0 +1,321 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨Cocomelon Learning✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('../backgroundImage/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            overflow: hidden;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') center/cover no-repeat;
+            filter: blur(10px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+        
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 6em;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            /* background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8));  */
+            padding: 20px;
+            margin-top: 80px;
+            /* border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 4px dashed black; */
+        }
+        h2 {
+            text-align: center;
+            color: white;
+            font-size: 2em;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.9));
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 100px;
+            width: 70%;
+            max-width: 500px;
+            /* border: 4px dashed white; */
+        }
+        h2:hover {
+            background: #4682B4;
+            transform: scale(1.1);
+        }
+        h2 a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5em;
+            transition: 0.3s;
+        }
+        nav {
+            align-items: center;
+            position: absolute;
+            top: 10px;  
+            right: 10px;  
+            width: 50%;  
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8)); 
+            padding: 10px;
+            border-radius: 10px;
+            /* border: 4px dashed white; */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0;
+            align-items: center;
+        }
+
+        nav ul li {
+            display: inline;
+            flex: 1;
+            text-align: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            padding: 8px 10px;
+            border: 3px dashed white;
+            border-radius: 8px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.3);
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background: #4682B4; 
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>✨🎃Coco  Melon  Learning🎃✨</h1>
+    <h2><a href="learning.html">✨ Let's Learn ✨</a></h2>
+    <nav>✨✨
+        <ul>
+            <li><a href="home.html">⚡Home⚡</a></li>🎃🎃
+            <li><a href="about.html">⚡About Us⚡</a></li>🎃🎃
+            <li><a href="contact.html">⚡Contact⚡</a></li>
+            
+        </ul>
+        ✨✨
+    </nav>
+
+</body>
+</html> 
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocomelon Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('../backgroundImage/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 20px;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../backgroundImage/background2.jpg') center/cover no-repeat;
+            filter: blur(10px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8));
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border: 5px dashed black;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            color: white;
+            font-size: 2em;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.9), rgba(70, 130, 180, 0.9));
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            width: 70%;
+            max-width: 500px;
+        }
+        h2:hover {
+            background: #4682B4;
+            transform: scale(1.1);
+        }
+        h2 a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5em;
+            transition: 0.3s;
+        }
+        nav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50%;
+            max-width: 500px;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8));
+            padding: 12px;
+            border-radius: 10px;
+            border: 5px dashed black;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            flex: 1;
+            text-align: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            padding: 8px 12px;
+            border: 3px dashed black;
+            border-radius: 8px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.3);
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background: #4682B4;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+                padding: 15px;
+                width: 90%;
+            }
+            h2 {
+                font-size: 1.8em;
+                padding: 12px;
+                width: 80%;
+            }
+            nav {
+                width: 80%;
+                max-width: 350px;
+                top: 15px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul li {
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+                padding: 12px;
+            }
+            h2 {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+            nav {
+                width: 90%;
+                max-width: 300px;
+            }
+            nav ul li a {
+                font-size: 0.9em;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎵 Cocomelon Learning 🎵</h1>
+    <h2><a href="learning.html">Let's Learn</a></h2>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html> --> 

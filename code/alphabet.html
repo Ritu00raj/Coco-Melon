@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨Alphabets✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('../backgroundImage/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 20px;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../backgroundImage/background.jpg') center/cover no-repeat;
+            filter: blur(20px);
+            opacity: 0.8;
+            z-index: -1;
+        }
+        nav {
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 18%;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.8), rgba(70, 130, 180, 0.8)); 
+            padding: 10px;
+            /* border: 4px dashed white; */
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            flex: 1;
+            text-align: center;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border: 3px dashed white;
+            border-radius: 8px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.3);
+            display: inline-block;
+        }
+        nav ul li a:hover {
+            background: #4682B4;
+            transform: scale(1.1);
+        }
+        .quiz-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(45deg, #00bfff, #4682b4);
+        color: white;
+        border: 3px dashed white;
+        border-radius: 12px;
+        padding: 12px 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        z-index: 10000;
+        }
+        .quiz-btn:hover {
+        background: #4682b4;
+        transform: scale(1.1);
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 80vh;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .background-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 5em;
+            font-weight: bold;
+            color: black;
+            text-transform: uppercase;
+            white-space: nowrap;
+            z-index: -1;
+            user-select: none;
+            filter: blur(1px); 
+            opacity: 0.6; 
+        }
+
+        .alphabet-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px;
+            width: 30%;
+        }
+        .box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.9), rgba(70, 130, 180, 0.9));
+            border-radius: 10px;
+            border: 4px dashed white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+            background: rgba(70, 130, 180, 1);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .popup {
+            position: relative;
+            width: 35%; 
+            height: 250px; 
+            background: linear-gradient(45deg, rgba(0, 191, 255, 0.9), rgba(70, 130, 180, 0.9));
+            display: none;
+            flex-direction:column;
+            justify-content: right;
+            align-items: center;
+            border-radius: 10px;
+            border: 4px dashed white;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+            z-index: 9999;
+        }
+        .popup img {
+            width: 250px;
+            height: 250px;
+        }
+
+        .popup span {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px; 
+            background: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            background: darkred;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>✨✨
+        <ul>
+            <li><a href="learning.html">⚡Go Back⚡</a></li>
+        </ul>✨✨
+    </nav>
+
+    <div class="main-container">
+        <div class="background-text">✨🎃Coco  Melon  Learning🎃✨</div>
+        <div class="alphabet-container">
+            <div class="box" onclick="showPopup('A')">A</div>
+            <div class="box" onclick="showPopup('B')">B</div>
+            <div class="box" onclick="showPopup('C')">C</div>
+            <div class="box" onclick="showPopup('D')">D</div>
+            <div class="box" onclick="showPopup('E')">E</div>
+            <div class="box" onclick="showPopup('F')">F</div>
+            <div class="box" onclick="showPopup('G')">G</div>
+            <div class="box" onclick="showPopup('H')">H</div>
+            <div class="box" onclick="showPopup('I')">I</div>
+            <div class="box" onclick="showPopup('J')">J</div>
+            <div class="box" onclick="showPopup('K')">K</div>
+            <div class="box" onclick="showPopup('L')">L</div>
+            <div class="box" onclick="showPopup('M')">M</div>
+            <div class="box" onclick="showPopup('N')">N</div>
+            <div class="box" onclick="showPopup('O')">O</div>
+            <div class="box" onclick="showPopup('P')">P</div>
+            <div class="box" onclick="showPopup('Q')">Q</div>
+            <div class="box" onclick="showPopup('R')">R</div>
+            <div class="box" onclick="showPopup('S')">S</div>
+            <div class="box" onclick="showPopup('T')">T</div>
+            <div class="box" onclick="showPopup('U')">U</div>
+            <div class="box" onclick="showPopup('V')">V</div>
+            <div class="box" onclick="showPopup('W')">W</div>
+            <div class="box" onclick="showPopup('X')">X</div>
+            <div class="box" onclick="showPopup('Y')">Y</div>
+            <div class="box" onclick="showPopup('Z')">Z</div>
+        </div>
+        <div id="popup" class="popup">
+            <button class="close-btn" onclick="closePopup()">✖</button>
+            <img id="popup-img" src="" alt="Letter">
+            <span id="popup-text"></span>
+        </div>    
+        <a href="alphabetQuiz.html" class="quiz-btn">🎯 Quiz Time</a>
+    
+    <script>
+        function showPopup(letter) {
+            document.getElementById("popup-img").src = "../alphabetImage/"+ letter.toLowerCase() + ".jpg"; 
+            document.getElementById("popup-text").innerText = letter;
+            document.getElementById("popup").style.display = "flex";
+
+            let audio = new Audio("../alphabetAudio/"+letter.toLowerCase() + ".mp3"); 
+            audio.play();
+        }
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
